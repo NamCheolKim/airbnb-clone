@@ -182,3 +182,65 @@ def kakao_callback(request):
         return redirect(reverse("core:home"))
     except KakaoException:
         return redirect(reverse("users:login"))
+
+
+def naver_login(request):
+    client_id = os.environ.get("NAVER_ID")
+    state = ""
+    redirect_uri = "http://127.0.0.1:8000/users/login/naver/callback"
+    return redirect(
+        f"https://nid.naver.com/oauth2.0/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&state={state}"
+    )
+
+
+class NaverException(Exception):
+    pass
+
+
+def naver_callback(request):
+    try:
+        client_id = os.environ.get("NAVER_ID")
+        client_secret = os.environ.get("NAVER_SECRET")
+        code = request.GET.get("code", None)
+        state = request.GET.get("state", None)
+        token_request = requests.get(
+            f"https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id={client_id}&client_secret={client_secret}&code={code}&state={state}"
+        )
+        token_json = token_request.json()
+        error = token_json.get("error", None)
+        if error is not None:
+            raise NaverException()
+        access_token = token_json.get("access_token")
+        profile_request = requests.get(
+            "https://openapi.naver.com/v1/nid/me",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        profile_json = profile_request.json()
+        email = profile_json.get("response", None).get("email")
+        if email is None:
+            raise NaverException()
+        properties = profile_json.get("response")
+        name = properties.get("name")
+        nickname = properties.get("nickname")
+        profile_image = properties.get("profile_image")
+        try:
+            user = models.User.objects.get(email=email)
+            if user.login_method != models.User.LOGIN_NAVER:
+                raise NaverException()
+        except models.User.DoesNotExist:
+            user = models.User.objects.create(
+                email=email,
+                username=email,
+                first_name=nickname,
+                login_method=models.User.LOGIN_NAVER,
+                email_verified=True,
+            )
+            user.set_unusable_password()
+            user.save()
+            if profile_image is not None:
+                photo_request = requests.get(profile_image)
+                user.avatar.save(f"{nickname}-avatar", ContentFile(photo_request.content))
+        login(request, user)
+        return redirect(reverse("core:home"))
+    except NaverException:
+        return redirect(reverse("users:login"))
