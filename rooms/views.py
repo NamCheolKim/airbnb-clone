@@ -50,6 +50,7 @@ class SearchView(View):
                 superhost = form.cleaned_data.get("superhost")
                 amenities = form.cleaned_data.get("amenities")
                 facilities = form.cleaned_data.get("facilities")
+                houserules = form.cleaned_data.get("houserules")
 
                 filter_args = {}
 
@@ -87,6 +88,9 @@ class SearchView(View):
 
                 for facility in facilities:
                     filter_args["facilities"] = facility
+
+                for houserule in houserules:
+                    filter_args["houserules"] = houserule
 
                 qs = models.Room.objects.filter(**filter_args).order_by("-created")
 
