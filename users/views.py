@@ -239,6 +239,7 @@ def naver_callback(request):
                 email=email,
                 username=email,
                 first_name=nickname,
+                last_name=name,
                 login_method=models.User.LOGIN_NAVER,
                 email_verified=True,
             )
