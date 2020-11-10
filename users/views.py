@@ -260,4 +260,3 @@ def naver_callback(request):
 class UserProfileView(DetailView):
     model = models.User
     context_object_name = "user_obj"
-    pass
