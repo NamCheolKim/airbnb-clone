@@ -24,7 +24,7 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
-    
+
     def get_success_url(self):
         next_arg = self.request.GET.get("next")
         if next_arg is not None:
@@ -299,7 +299,12 @@ class UpdateProfileView(mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView
         return form
 
 
-class UpdatePasswordView(mixins.EmailLoginOnlyView, mixins.LoggedInOnlyView, SuccessMessageMixin, PasswordChangeView):
+class UpdatePasswordView(
+    mixins.LoggedInOnlyView,
+    mixins.EmailLoginOnlyView,
+    SuccessMessageMixin,
+    PasswordChangeView,
+):
     template_name = "users/update-password.html"
     success_message = "Password Updated"
 
@@ -311,6 +316,6 @@ class UpdatePasswordView(mixins.EmailLoginOnlyView, mixins.LoggedInOnlyView, Suc
             "placeholder": "Confirm new password"
         }
         return form
-    
+
     def get_success_url(self):
         return self.request.user.get_absolute_url()

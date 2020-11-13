@@ -12,7 +12,9 @@
             </div>
             <span class="text-sm flex items-center">
                 <i class="fas fa-star text-red-500 text-xs mr-1"></i> {{room.total_rating}}
+                <span class="text-gray-600 text-light text-sm ml-1">({{room.reviews.count}})</span>
             </span>
+
         </div>
         <span class="text-black w-11/12 block truncate">{{room.name}}</span>
     </a>
