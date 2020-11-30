@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-01 02:21+0900\n"
+"POT-Creation-Date: 2020-12-01 02:20+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,69 +16,69 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: templates/base.html:11
 msgid "Vacation Rentals, Homes, Experiences & Places - Airbnb"
-msgstr "Alquileres vacacionales, casas, experiencias y lugares - Airbnb"
+msgstr "숙소, 체험, 장소를 모두 한 곳에서 - 에어비앤비"
 
 #: templates/base.html:22
 msgid "Search By City"
-msgstr "Buscar por Ciudad"
+msgstr "검색 시작하기"
 
 #: templates/partials/footer.html:4
 msgid "All rights reserved"
-msgstr "Todos los derechos reservados"
+msgstr ""
 
 #: templates/partials/nav.html:8
 msgid "Stop hosting"
-msgstr "Cambiar a Invitado"
+msgstr "호스트 취소"
 
 #: templates/partials/nav.html:10
 msgid "Start hosting"
-msgstr "Cambiar a Host"
+msgstr "호스트 되기"
 
 #: templates/partials/nav.html:16
 msgid "Create Room"
-msgstr "Crear Habitación"
+msgstr "숙소 등록하기"
 
 #: templates/partials/nav.html:18
 msgid "Favs"
-msgstr ""
+msgstr "저장 목록"
 
 #: templates/partials/nav.html:19
 msgid "Profile"
-msgstr "Perfil"
+msgstr "프로필"
 
 #: templates/partials/nav.html:20
 msgid "Log out"
-msgstr "Cerrar Sesión"
+msgstr "로그아웃"
 
 #: templates/partials/nav.html:22
 msgid "Log in"
-msgstr "Iniciar Sesión"
+msgstr "로그인"
 
 #: templates/partials/nav.html:23
 msgid "Sign up"
-msgstr "Crear Cuenta"
+msgstr "회원가입"
 
 #: templates/rooms/room_detail.html:33
 msgid "Remove to Favourites"
-msgstr ""
+msgstr "삭제"
 
 #: templates/rooms/room_detail.html:35
 msgid "Save to Favourites"
-msgstr ""
+msgstr "저장"
 
 #: templates/rooms/room_list.html:12
 msgid "Go"
-msgstr "Mejor"
+msgstr "이제, 여행은"
 
 #: templates/rooms/room_list.html:13
 msgid "Near"
-msgstr "cerca"
+msgstr "가까운 곳에서"
 
 #: templates/rooms/room_list.html:35
 #, python-format
 msgid "Page %(current_page)s of %(total_pages)s"
-msgstr "Página %(current_page)s de %(total_pages)s"
+msgstr ""
