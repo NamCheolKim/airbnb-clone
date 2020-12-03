@@ -21,7 +21,7 @@ module.exports = {
         "108px": "108px"
       },
       lineHeight: {
-        custom: "92.88px"
+        custom: "80px"
       }
     }
   },
